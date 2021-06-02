@@ -3,6 +3,8 @@ services:
     db:
         image: mysql:latest
         restart: always
+        ports: 
+            - '3306:3306'
         environment: 
             MYSQL_ROOT_PASSWORD: toor
             MYSQL_DATABASE: wordpress
@@ -19,7 +21,7 @@ services:
         restart: always
         volumes: ['./wordpress_data:/var/www/html']
         environment: 
-            WORDPRESS_DB_HOST: db
+            WORDPRESS_DB_HOST: db:3306
             WORDPRESS_DB_USER: wordpress
             WORDPRESS_DB_PASSWRD: wordpress
         networks: 
